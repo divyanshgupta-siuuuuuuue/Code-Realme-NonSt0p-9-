@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CODE REALME NONSTOP</title>
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:#070111;
+color:white;
+overflow:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left,rgba(168,85,247,.15),transparent 30%),
+radial-gradient(circle at bottom right,rgba(250,204,21,.07),transparent 30%);
+z-index:-1;
+}
+
+.orbitron{
+font-family:Orbitron,sans-serif;
+}
+
+.sidebar{
+width:90px;
+background:rgba(12,7,25,.96);
+border-right:1px solid rgba(168,85,247,.2);
+backdrop-filter:blur(20px);
+}
+
+.page{
+display:none;
+height:100vh;
+overflow:auto;
+padding:25px;
+}
+
+.active{
+display:block;
+}
+
+.glass{
+background:rgba(20,10,40,.6);
+backdrop-filter:blur(15px);
+border:1px solid rgba(168,85,247,.2);
+}
+
+.nav-btn{
+transition:.25s;
+}
+
+.nav-btn:hover{
+transform:translateY(-3px);
+background:rgba(168,85,247,.18);
+}
+
+.editor{
+background:#050505;
+color:#00ff9d;
+font-family:monospace;
+outline:none;
+}
+
+.terminal{
+background:#000;
+color:#00ff9d;
+font-family:monospace;
+overflow:auto;
+}
+
+.project-card{
+transition:.25s;
+}
+
+.project-card:hover{
+transform:translateY(-5px);
+border-color:#facc15;
+}
+
+.live-user{
+background:rgba(0,0,0,.5);
+border:1px solid rgba(255,255,255,.1);
+}
+
+.file-item:hover{
+background:rgba(168,85,247,.15);
+}
+
+.live-ring{
+box-shadow:0 0 30px #3b82f6;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:.5;}
+100%{opacity:1;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="flex h-screen">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar flex flex-col items-center py-5 gap-4">
+
+<div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-yellow-400">
+
+<img id="mainLogo"
+src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+class="w-full h-full object-cover">
+
+</div>
+
+<div class="text-[10px] orbitron text-yellow-400">
+CRN
+</div>
+
+<button onclick="openPage('dashboardPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-house text-yellow-400"></i>
+</button>
+
+<button onclick="openPage('projectsPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-code text-yellow-400"></i>
+</button>
+
+<button onclick="openPage('compilerPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-terminal text-yellow-400"></i>
+</button>
+
+<button onclick="openPage('socialPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-users text-yellow-400"></i>
+</button>
+
+<button onclick="openPage('meetingPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-video text-yellow-400"></i>
+</button>
+
+<button onclick="openPage('linksPage')" class="nav-btn w-14 h-14 rounded-2xl glass">
+<i class="fa-solid fa-link text-yellow-400"></i>
+</button>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="flex-1 overflow-hidden">
+
+<!-- DASHBOARD -->
+
+<div id="dashboardPage" class="page active">
+
+<div class="flex justify-between items-center">
+
+<div class="flex items-center gap-5">
+
+<img id="profileLogo"
+src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+class="w-24 h-24 rounded-3xl border-2 border-yellow-400 object-cover">
+
+<div>
+
+<h1 class="orbitron text-5xl text-yellow-400">
+CODE REALME NONSTOP
+</h1>
+
+<div class="text-purple-300 mt-2">
+Infinite Multiplayer Coding Network
+</div>
+
+</div>
+
+</div>
+
+<div class="glass rounded-3xl p-5">
+
+<div class="text-xs text-purple-300">
+YOUR SOCIAL ID
+</div>
+
+<div id="socialId" class="orbitron text-2xl text-yellow-400 mt-2">
+CRN-482920
+</div>
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-3 gap-6 mt-8">
+
+<div class="glass rounded-3xl p-6">
+
+<div class="text-purple-300">
+USERNAME
+</div>
+
+<input id="username"
+class="w-full mt-5 bg-black/40 p-4 rounded-2xl outline-none"
+placeholder="Username">
+
+</div>
+
+<div class="glass rounded-3xl p-6">
+
+<div class="text-purple-300">
+BIO
+</div>
+
+<textarea id="bio"
+class="w-full h-40 mt-5 bg-black/40 p-4 rounded-2xl outline-none"
+placeholder="Write bio"></textarea>
+
+</div>
+
+<div class="glass rounded-3xl p-6">
+
+<div class="text-purple-300">
+PROFILE LOGO
+</div>
+
+<input type="file"
+accept="image/*"
+id="logoInput"
+class="mt-5">
+
+<button onclick="saveProfile()"
+class="w-full mt-6 bg-yellow-400 text-black py-4 rounded-2xl orbitron font-bold">
+SAVE PROFILE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROJECTS -->
+
+<div id="projectsPage" class="page">
+
+<div class="flex justify-between items-center">
+
+<h1 class="orbitron text-5xl text-yellow-400">
+PROJECT COMMAND CENTER
+</h1>
+
+<button onclick="createProject()"
+class="bg-yellow-400 text-black px-6 py-4 rounded-2xl orbitron font-bold">
++ CREATE PROJECT
+</button>
+
+</div>
+
+<div class="glass rounded-3xl p-6 mt-8">
+
+<div class="grid grid-cols-2 gap-6">
+
+<input id="projectName"
+placeholder="Project Name"
+class="bg-black/40 rounded-2xl p-4 outline-none">
+
+<input id="projectPurpose"
+placeholder="Project Purpose"
+class="bg-black/40 rounded-2xl p-4 outline-none">
+
+<textarea id="projectDescription"
+placeholder="Project Description"
+class="bg-black/40 rounded-2xl p-4 outline-none h-40"></textarea>
+
+<div>
+
+<div class="flex gap-4">
+
+<button onclick="setProjectType('public')"
+id="publicBtn"
+class="flex-1 bg-yellow-400 text-black py-4 rounded-2xl orbitron">
+PUBLIC
+</button>
+
+<button onclick="setProjectType('private')"
+id="privateBtn"
+class="flex-1 bg-purple-700 py-4 rounded-2xl orbitron">
+PRIVATE
+</button>
+
+</div>
+
+<input type="file"
+multiple
+id="projectFiles"
+class="mt-6 w-full">
+
+</div>
+
+</div>
+
+</div>
+
+<div id="projectCards"
+class="grid grid-cols-2 gap-6 mt-8"></div>
+
+<!-- WORKSPACE -->
+
+<div id="workspace"
+class="hidden mt-8">
+
+<div class="grid grid-cols-4 gap-6">
+
+<!-- FILES -->
+
+<div class="glass rounded-3xl p-5 h-[750px] overflow-auto">
+
+<div class="flex justify-between items-center">
+
+<div class="orbitron text-yellow-400">
+FILES
+</div>
+
+<button onclick="addFile()"
+class="bg-yellow-400 text-black px-4 py-2 rounded-xl">
++
+</button>
+
+</div>
+
+<div id="filesList"
+class="mt-5 space-y-2"></div>
+
+</div>
+
+<!-- EDITOR -->
+
+<div class="col-span-2 glass rounded-3xl p-5">
+
+<div class="flex justify-between">
+
+<div class="orbitron text-yellow-400">
+EDITOR
+</div>
+
+<div class="flex gap-3">
+
+<button onclick="compileProject()"
+class="bg-yellow-400 text-black px-5 py-3 rounded-xl orbitron">
+COMPILE
+</button>
+
+<button onclick="previewProject()"
+class="bg-blue-600 px-5 py-3 rounded-xl orbitron">
+PREVIEW
+</button>
+
+</div>
+
+</div>
+
+<textarea id="editor"
+class="editor w-full h-[650px] mt-5 rounded-2xl p-5"
+spellcheck="false">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Project</title>
+</head>
+<body>
+<h1>Hello World</h1>
+</body>
+</html>
+</textarea>
+
+</div>
+
+<!-- TERMINAL -->
+
+<div class="glass rounded-3xl p-5">
+
+<div class="flex justify-between">
+
+<div class="orbitron text-yellow-400">
+TERMINAL
+</div>
+
+<div class="text-green-400 text-sm">
+LIVE
+</div>
+
+</div>
+
+<div id="terminal"
+class="terminal mt-5 rounded-2xl p-4 h-[300px]">
+> CRN Terminal Ready
+</div>
+
+<iframe id="preview"
+class="w-full h-[300px] mt-5 rounded-2xl bg-white"></iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COMPILER -->
+
+<div id="compilerPage" class="page">
+
+<div class="flex justify-between items-center">
+
+<h1 class="orbitron text-5xl text-yellow-400">
+ONE COMPILER
+</h1>
+
+<select id="language"
+class="bg-black/40 rounded-2xl p-4 outline-none">
+
+<option>HTML</option>
+<option>CSS</option>
+<option>JavaScript</option>
+<option>Python</option>
+<option>C++</option>
+<option>Java</option>
+
+</select>
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-8">
+
+<div class="glass rounded-3xl p-5">
+
+<textarea id="compilerEditor"
+class="editor w-full h-[700px] rounded-2xl p-5"
+spellcheck="false">
+console.log("CRN Compiler");
+</textarea>
+
+</div>
+
+<div class="glass rounded-3xl p-5">
+
+<div class="flex gap-4">
+
+<button onclick="runCompiler()"
+class="bg-yellow-400 text-black px-6 py-3 rounded-2xl orbitron">
+RUN
+</button>
+
+<button onclick="clearTerminal()"
+class="bg-red-600 px-6 py-3 rounded-2xl orbitron">
+CLEAR
+</button>
+
+</div>
+
+<div id="compilerTerminal"
+class="terminal rounded-2xl p-4 h-[300px] mt-5">
+> Compiler Ready
+</div>
+
+<iframe id="compilerPreview"
+class="w-full h-[320px] rounded-2xl mt-5 bg-white"></iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SOCIAL -->
+
+<div id="socialPage" class="page">
+
+<div class="flex justify-between items-center">
+
+<h1 class="orbitron text-5xl text-yellow-400">
+SOCIAL NETWORK
+</h1>
+
+<div class="glass rounded-2xl p-4">
+ONLINE USERS: 12
+</div>
+
+</div>
+
+<div class="grid grid-cols-3 gap-6 mt-8">
+
+<div class="glass rounded-3xl p-5">
+
+<div class="orbitron text-yellow-400">
+ADD FRIEND
+</div>
+
+<input id="friendId"
+placeholder="Enter Social ID"
+class="w-full mt-5 bg-black/40 rounded-2xl p-4 outline-none">
+
+<button onclick="addFriend()"
+class="w-full mt-5 bg-yellow-400 text-black py-4 rounded-2xl orbitron">
+SEND REQUEST
+</button>
+
+</div>
+
+<div class="glass rounded-3xl p-5 col-span-2">
+
+<div class="orbitron text-yellow-400">
+FRIENDS
+</div>
+
+<div id="friendsList"
+class="space-y-4 mt-5">
+
+<div class="live-user rounded-2xl p-4 flex justify-between items-center">
+
+<div>
+<div class="font-bold">Alex</div>
+<div class="text-sm text-purple-300">CRN-92011</div>
+</div>
+
+<div class="flex gap-3">
+
+<button class="bg-blue-600 px-4 py-2 rounded-xl">
+CALL
+</button>
+
+<button class="bg-purple-600 px-4 py-2 rounded-xl">
+PROJECT
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MEETING -->
+
+<div id="meetingPage" class="page">
+
+<div class="flex justify-between items-center">
+
+<h1 class="orbitron text-5xl text-yellow-400">
+LIVE COLLAB ROOM
+</h1>
+
+<div class="flex gap-3">
+
+<button onclick="toggleCamera()"
+class="bg-purple-700 px-5 py-3 rounded-2xl">
+<i class="fa-solid fa-video"></i>
+</button>
+
+<button onclick="toggleMic()"
+class="bg-purple-700 px-5 py-3 rounded-2xl">
+<i class="fa-solid fa-microphone"></i>
+</button>
+
+<button onclick="shareScreen()"
+class="bg-blue-600 px-5 py-3 rounded-2xl">
+<i class="fa-solid fa-display"></i>
+</button>
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-8">
+
+<div class="glass rounded-3xl p-5">
+
+<video id="localVideo"
+autoplay
+muted
+playsinline
+class="w-full h-[500px] rounded-2xl bg-black object-cover"></video>
+
+</div>
+
+<div class="glass rounded-3xl p-5 relative">
+
+<video id="remoteVideo"
+autoplay
+playsinline
+class="w-full h-[500px] rounded-2xl bg-black object-cover"></video>
+
+<div class="absolute top-10 right-10 w-5 h-5 rounded-full bg-blue-500 live-ring"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LINKS -->
+
+<div id="linksPage" class="page">
+
+<div class="flex justify-between items-center">
+
+<h1 class="orbitron text-5xl text-yellow-400">
+LINK DEPLOYMENT
+</h1>
+
+<button onclick="generateLink()"
+class="bg-yellow-400 text-black px-6 py-4 rounded-2xl orbitron">
+GENERATE LINK
+</button>
+
+</div>
+
+<div class="glass rounded-3xl p-6 mt-8">
+
+<div class="text-purple-300">
+PROJECT PUBLIC URL
+</div>
+
+<div id="projectLink"
+class="orbitron text-2xl text-yellow-400 mt-5 break-all">
+No Link Generated
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let projectType='public';
+let localStream=null;
+
+function openPage(id){
+
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+
+}
+
+function setProjectType(type){
+
+projectType=type;
+
+document.getElementById('publicBtn').className='flex-1 bg-purple-700 py-4 rounded-2xl orbitron';
+document.getElementById('privateBtn').className='flex-1 bg-purple-700 py-4 rounded-2xl orbitron';
+
+if(type==='public'){
+document.getElementById('publicBtn').className='flex-1 bg-yellow-400 text-black py-4 rounded-2xl orbitron';
+}else{
+document.getElementById('privateBtn').className='flex-1 bg-yellow-400 text-black py-4 rounded-2xl orbitron';
+}
+
+}
+
+function saveProfile(){
+
+const name=document.getElementById('username').value;
+localStorage.setItem('crn_name',name);
+
+alert('Profile Saved');
+
+}
+
+document.getElementById('logoInput').addEventListener('change',function(e){
+
+const file=e.target.files[0];
+
+if(file){
+
+const reader=new FileReader();
+
+reader.onload=function(ev){
+
+document.getElementById('profileLogo').src=ev.target.result;
+document.getElementById('mainLogo').src=ev.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+function createProject(){
+
+const name=document.getElementById('projectName').value;
+
+if(!name){
+alert('Enter Project Name');
+return;
+}
+
+document.getElementById('workspace').classList.remove('hidden');
+
+const card=document.createElement('div');
+
+card.className='project-card glass rounded-3xl p-5';
+
+card.innerHTML=`
+<div class="orbitron text-2xl text-yellow-400">${name}</div>
+<div class="text-purple-300 mt-3">${projectType.toUpperCase()}</div>
+`;
+
+document.getElementById('projectCards').appendChild(card);
+
+terminalLog('Project Created: '+name);
+
+}
+
+function addFile(){
+
+const fileName=prompt('Enter File Name');
+
+if(!fileName) return;
+
+const div=document.createElement('div');
+
+div.className='file-item bg-black/30 rounded-xl p-3 cursor-pointer';
+
+div.innerHTML=fileName;
+
+div.onclick=function(){
+
+document.getElementById('editor').value='// '+fileName;
+
+};
+
+document.getElementById('filesList').appendChild(div);
+
+terminalLog('File Added: '+fileName);
+
+}
+
+function compileProject(){
+
+const code=document.getElementById('editor').value;
+
+terminalLog('Compiling Project...');
+
+if(code.includes('error')){
+
+speakError();
+
+terminalLog('Syntax Error Detected');
+
+}else{
+
+terminalLog('Compilation Successful');
+
+}
+
+}
+
+function previewProject(){
+
+document.getElementById('preview').srcdoc=
+document.getElementById('editor').value;
+
+terminalLog('Live Preview Started');
+
+}
+
+function terminalLog(text){
+
+const terminal=document.getElementById('terminal');
+
+terminal.innerHTML+='<br>> '+text;
+
+terminal.scrollTop=terminal.scrollHeight;
+
+}
+
+function runCompiler(){
+
+const code=document.getElementById('compilerEditor').value;
+
+document.getElementById('compilerPreview').srcdoc=code;
+
+const terminal=document.getElementById('compilerTerminal');
+
+terminal.innerHTML+='<br>> Running Compiler';
+
+if(code.includes('error')){
+
+speakError();
+
+terminal.innerHTML+='<br>> Syntax Error';
+
+}else{
+
+terminal.innerHTML+='<br>> Execution Successful';
+
+}
+
+}
+
+function clearTerminal(){
+
+document.getElementById('compilerTerminal').innerHTML='> Terminal Cleared';
+
+}
+
+function speakError(){
+
+const utter=new SpeechSynthesisUtterance('Syntax Error Found');
+
+utter.lang='en-GB';
+
+speechSynthesis.speak(utter);
+
+}
+
+function addFriend(){
+
+const id=document.getElementById('friendId').value;
+
+if(!id){
+alert('Enter Social ID');
+return;
+}
+
+alert('Friend Request Sent to '+id);
+
+}
+
+async function toggleCamera(){
+
+try{
+
+localStream=await navigator.mediaDevices.getUserMedia({
+video:true,
+audio:true
+});
+
+document.getElementById('localVideo').srcObject=localStream;
+
+}catch(err){
+
+alert('Camera Permission Denied');
+
+}
+
+}
+
+function toggleMic(){
+
+if(!localStream) return;
+
+localStream.getAudioTracks().forEach(track=>{
+track.enabled=!track.enabled;
+});
+
+}
+
+async function shareScreen(){
+
+try{
+
+const stream=await navigator.mediaDevices.getDisplayMedia({
+video:true
+});
+
+document.getElementById('remoteVideo').srcObject=stream;
+
+}catch(err){
+
+alert('Screen Share Cancelled');
+
+}
+
+}
+
+function generateLink(){
+
+const id=Math.floor(Math.random()*999999);
+
+document.getElementById('projectLink').innerHTML=
+window.location.origin+'/project-'+id;
+
+}
+
+</script>
+
+</body>
+</html>
